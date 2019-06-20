@@ -28,6 +28,8 @@ void loop()
         && (millis() - lastButtonPressTime > BUTTON_DEBOUNCE_TIME))
   {
     myPacketSerial.send(sendBuffer, 10);
+    lastButtonState = buttonState;
+    lastButtonPressTime = millis();
   }
   myPacketSerial.update();
 }
